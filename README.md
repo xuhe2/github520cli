@@ -9,8 +9,17 @@ github520cli是一个使用GO编写,依赖[github520](https://github.com/521xuew
 
 # 怎么用
 
+## Linux和mac系统
+
 ```shell
 sudo ./github520cli
 ```
-> 注意: 在mac和linux系统上需要使用sudo命令,否则会报权限错误
-> 在Windows系统上需要使用管理员权限运行
+> 注意: 在mac和linux系统上需要使用sudo命令,否则会报权限错误.
+
+![use-case-linux](./docs/imgs/use-case-linux.png)
+
+## Windows系统
+
+- 在Windows系统上需要使用管理员权限运行
+
+![use-case-windows](./docs/imgs/use-case-windows.png)
