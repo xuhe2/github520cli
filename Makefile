@@ -9,6 +9,9 @@ MAIN_FILE := main.go
 
 BIN_DIR := ./bin
 APP := github520cli # the name of the application
+ifeq ($(OS),Windows_NT)
+    APP := $(strip $(APP)).exe
+endif
 
 # the name of the docker image
 # DOCKER_IMAGE_NAME := docker-image-name-example
