@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"log/slog"
 	"net/http"
 	"os"
 
@@ -30,9 +31,10 @@ func UpdateHosts() {
 	newHostsContent := string(body)
 
 	if utils.CheckConfigAvailable(newHostsContent) {
-		fmt.Println("配置可用")
+		slog.Info("config available")
 	} else {
-		fmt.Println("配置不可用")
+		slog.Error("config not available")
+		os.Exit(1)
 	}
 
 	// get hosts config file
