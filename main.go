@@ -6,12 +6,32 @@ import (
 	"log/slog"
 	"net/http"
 	"os"
+	"time"
 
 	"github.com/xuhe2/github520cli/utils"
 )
 
 func main() {
-	UpdateHosts()
+	// update hosts file once
+	if len(os.Args) == 1 {
+		UpdateHosts()
+	}
+	// has more args
+	// if arg has `--auto/-a`, update hosts file every 1 hour
+	args := os.Args[1:]
+	for _, arg := range args {
+		switch arg {
+		case "--auto", "-a":
+			handleAutoArg()
+		}
+	}
+}
+
+func handleAutoArg() {
+	ticker := time.NewTicker(time.Hour)
+	for range ticker.C {
+		UpdateHosts()
+	}
 }
 
 func UpdateHosts() {
